@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1647836992 source:c:\users\rodri\documents\projeto_recomendação\projeto_recomendação\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"funcoes.h"
+
+1648332861 c:\users\rodri\documents\projeto_recomendação\projeto_recomendação\funcoes.h
+
+1648334645 source:c:\users\rodri\documents\projeto_recomendação\projeto_recomendação\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	"funcoes.h"
+
