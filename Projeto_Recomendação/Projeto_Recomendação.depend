@@ -7,10 +7,11 @@
 
 1648332861 c:\users\rodri\documents\projeto_recomendação\projeto_recomendação\funcoes.h
 
-1648334645 source:c:\users\rodri\documents\projeto_recomendação\projeto_recomendação\funcoes.c
+1648879823 source:c:\users\rodri\documents\projeto_recomendação\projeto_recomendação\funcoes.c
 	<stdio.h>
 	<stdlib.h>
 	<stdbool.h>
 	<string.h>
+	<windows.h>
 	"funcoes.h"
 

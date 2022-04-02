@@ -2,7 +2,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <windows.h>
 #include "funcoes.h"
+
 
 FILE *file;
 FILME_LIVRO *ptrFilmeLivro, filmeLivro;
@@ -73,7 +75,9 @@ void recomendar(){
     ptrFilmeLivro = &filmeLivro;
     ptrMusica = &musica;
     int opcao;
+    char sn;
     bool sair = false;
+    bool confirmar = false;
 
     while(sair == false){
         system("cls");
@@ -84,42 +88,79 @@ void recomendar(){
 
         switch(opcao){
         case 1:
-            system("cls");
-            printf("Digite o nome: ");
-            fgets(filmeLivro.nome, 50, stdin);
-            strtok(filmeLivro.nome, "\n");
-            if (strlen(filmeLivro.nome) ==  50 - 1){
-                while ((ch = getchar()) != '\n' && ch != EOF);
+            confirmar = false;
+            while(confirmar == false){
+                system("cls");
+                printf("Digite o nome: ");
+                fgets(filmeLivro.nome, 200, stdin);
+                strtok(filmeLivro.nome, "\n");
+                if (strlen(filmeLivro.nome) ==  200 - 1){
+                    while ((ch = getchar()) != '\n' && ch != EOF);
+                }
+
+                printf("Digite os gêneros: ");
+                fgets(filmeLivro.genero, 200, stdin);
+                strtok(filmeLivro.genero, "\n");
+                if (strlen(filmeLivro.genero) ==  200 - 1){
+                    while ((ch = getchar()) != '\n' && ch != EOF);
+                }
+                printf("Filme ou livro?: ");
+                fgets(filmeLivro.tipo, 50, stdin);
+                strtok(filmeLivro.tipo, "\n");
+                if (strlen(filmeLivro.tipo) ==  50 - 1){
+                    while ((ch = getchar()) != '\n' && ch != EOF);
+                }
+
+                system("cls");
+
+                printf("Dados digitados\n\n");
+                printf("Nome: %s\nGeneros: %s\nTipo: %s", filmeLivro.nome, filmeLivro.genero, filmeLivro.tipo);
+
+                printf("\nConfirmar Dados? (S/N): ");
+                scanf("%c", &sn);
+                scanf("%c", &c);
+                sn = toupper(sn);
+
+                if(sn == 'S'){
+                    confirmar = true;
+                }
+
             }
 
-            printf("Digite os gêneros: ");
-            fgets(filmeLivro.genero, 50, stdin);
-            strtok(filmeLivro.genero, "\n");
-            if (strlen(filmeLivro.genero) ==  50 - 1){
-                while ((ch = getchar()) != '\n' && ch != EOF);
-            }
-            printf("Filme ou livro?: ");
-            fgets(filmeLivro.tipo, 10, stdin);
-            strtok(filmeLivro.tipo, "\n");
-            if (strlen(filmeLivro.tipo) ==  10 - 1){
-                while ((ch = getchar()) != '\n' && ch != EOF);
-            }
             salvarFilmeLivro(ptrFilmeLivro);
+
             break;
         case 2:
-            system("cls");
-            printf("Digite o nome da música: ");
-            fgets(musica.nomeMusica, sizeof(musica.nomeMusica), stdin);
-            strtok(musica.nomeMusica, "\n");
-            if (strlen(musica.nomeMusica)== sizeof(musica.nomeMusica) - 1){
-                while((ch = getchar()) != '\n' && ch != EOF);
+            confirmar = false;
+            while(confirmar == false){
+                system("cls");
+                printf("Digite o nome da música: ");
+                fgets(musica.nomeMusica, sizeof(musica.nomeMusica), stdin);
+                strtok(musica.nomeMusica, "\n");
+                if (strlen(musica.nomeMusica)== sizeof(musica.nomeMusica) - 1){
+                    while((ch = getchar()) != '\n' && ch != EOF);
+                }
+                printf("Digite o nome do artista: ");
+                fgets(musica.artista, sizeof(musica.artista), stdin);
+                strtok(musica.artista, "\n");
+                if (strlen(musica.artista) == sizeof(musica.artista) - 1){
+                    while((ch = getchar()) != '\n' && ch != EOF);
+                }
+                system("cls");
+
+                    printf("Dados digitados\n\n");
+                    printf("Nome: %s\nArtista: %s\n", musica.nomeMusica, musica.artista);
+
+                    printf("\nConfirmar Dados? (S/N): ");
+                    scanf("%c", &sn);
+                    scanf("%c", &c);
+                    sn = toupper(sn);
+
+                    if(sn == 'S'){
+                        confirmar = true;
+                    }
             }
-            printf("Digite o nome do artista: ");
-            fgets(musica.artista, sizeof(musica.artista), stdin);
-            strtok(musica.artista, "\n");
-            if (strlen(musica.artista) == sizeof(musica.artista) - 1){
-                while((ch = getchar()) != '\n' && ch != EOF);
-            }
+
             salvarMusica(ptrMusica);
             break;
         case 3:
